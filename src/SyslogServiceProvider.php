@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use nhattuanbl\Syslog\Http\Middleware\SysLogMiddleware;
 use nhattuanbl\Syslog\Services\SyslogService;
 
-class SyslogServiceProvider extends ServiceProvider implements DeferrableProvider
+class SyslogServiceProvider extends ServiceProvider
 {
     public function boot()
     {
