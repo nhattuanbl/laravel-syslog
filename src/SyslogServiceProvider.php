@@ -14,21 +14,23 @@ class SyslogServiceProvider extends ServiceProvider implements DeferrableProvide
     {
         $this->publishes([
             __DIR__.'/../config/syslog.php' => config_path('syslog.php'),
-            __DIR__.'/../database/migrations/' => database_path('migrations'),
         ], 'config');
 
-        //php artisan vendor:publish --tag=syslog --force
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/syslog'),
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/syslog'),
-            __DIR__.'/../public' => public_path('vendor/syslog'),
-            __DIR__.'/../resources/js' => public_path('vendor/syslog/js'),
-            __DIR__.'/../resources/css' => public_path('vendor/syslog/css'),
-        ], 'views');
+            __DIR__.'/database/migrations/' => database_path('migrations'),
+        ], 'migration');
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'syslog');
+//        $this->publishes([
+//            __DIR__.'/../resources/views' => resource_path('views/vendor/syslog'),
+//            __DIR__.'/../resources/lang' => resource_path('lang/vendor/syslog'),
+//            __DIR__.'/../public' => public_path('vendor/syslog'),
+//            __DIR__.'/../resources/js' => public_path('vendor/syslog/js'),
+//            __DIR__.'/../resources/css' => public_path('vendor/syslog/css'),
+//        ], 'views');
+
+//        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+//        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+//        $this->loadViewsFrom(__DIR__.'/../resources/views', 'syslog');
 
         $kernel = $this->app->make(Kernel::class);
         $kernel->pushMiddleware(SysLogMiddleware::class);
