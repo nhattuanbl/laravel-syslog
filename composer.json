@@ -1,0 +1,29 @@
+{
+    "name": "nhattuanbl/syslog",
+    "version": "1.0.0",
+    "description": "Laravel model & request logging",
+    "autoload": {
+        "psr-4": {
+            "nhattuanbl\\Syslog\\": "src/",
+            "nhattuanbl\\Syslog\\Database\\\\Factories\\\\": "database/factories"
+        }
+    },
+    "authors": [
+        {
+            "name": "nhattuanbl",
+            "email": "nhattuanbl@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "nhattuanbl\\Syslog\\SyslogServiceProvider"
+            ],
+            "aliases": [
+
+            ]
+        }
+    }
+}
