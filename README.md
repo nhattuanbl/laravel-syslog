@@ -4,6 +4,9 @@ Package designed to enhance Laravel application's logging capabilities. It offer
  - Request Logging (Memory Usage, Session Data, Request Headers)
 
 ## Installation
+```
+composer require nhattuanbl/syslog
+```
 Important: With version 5.4 or below, you must register your service providers manually in the providers section of the `config/app.php` configuration file in your laravel project.
 
 ```
