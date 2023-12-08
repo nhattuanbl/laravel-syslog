@@ -15,7 +15,7 @@ class SyslogServiceProvider extends ServiceProvider implements DeferrableProvide
         $this->publishes([
             __DIR__.'/../config/syslog.php' => config_path('syslog.php'),
             __DIR__.'/../database/migrations/' => database_path('migrations'),
-        ]);
+        ], 'syslog');
 
         //php artisan vendor:publish --tag=syslog --force
         $this->publishes([
@@ -24,7 +24,7 @@ class SyslogServiceProvider extends ServiceProvider implements DeferrableProvide
             __DIR__.'/../public' => public_path('vendor/syslog'),
             __DIR__.'/../resources/js' => public_path('vendor/syslog/js'),
             __DIR__.'/../resources/css' => public_path('vendor/syslog/css'),
-        ], 'views');
+        ], 'syslog');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');

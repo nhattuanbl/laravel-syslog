@@ -1,7 +1,8 @@
 {
     "name": "nhattuanbl/syslog",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Laravel model & request logging",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "nhattuanbl\\Syslog\\": "src/",
