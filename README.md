@@ -20,7 +20,7 @@ php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="config"
 ```
 Pushlish migration file
 ```
-php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="config"
+php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="migration"
 ```
 Default config
 ```
