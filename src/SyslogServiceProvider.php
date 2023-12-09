@@ -20,17 +20,17 @@ class SyslogServiceProvider extends ServiceProvider
             __DIR__.'/../database/migrations/' => database_path('migrations'),
         ], 'migration');
 
-        $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/syslog'),
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/syslog'),
-            __DIR__.'/../public' => public_path('vendor/syslog'),
-            __DIR__.'/../resources/js' => public_path('vendor/syslog/js'),
-            __DIR__.'/../resources/css' => public_path('vendor/syslog/css'),
-        ], 'views');
+//        $this->publishes([
+//            __DIR__.'/../resources/views' => resource_path('views/vendor/syslog'),
+//            __DIR__.'/../resources/lang' => resource_path('lang/vendor/syslog'),
+//            __DIR__.'/../public' => public_path('vendor/syslog'),
+//            __DIR__.'/../resources/js' => public_path('vendor/syslog/js'),
+//            __DIR__.'/../resources/css' => public_path('vendor/syslog/css'),
+//        ], 'views');
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+//        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'syslog');
+//        $this->loadViewsFrom(__DIR__.'/../resources/views', 'syslog');
 
         $kernel = $this->app->make(Kernel::class);
         $kernel->pushMiddleware(SysLogMiddleware::class);

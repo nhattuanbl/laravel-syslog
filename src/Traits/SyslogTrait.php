@@ -2,7 +2,6 @@
 
 namespace nhattuanbl\Syslog\Traits;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use nhattuanbl\Syslog\Jobs\SyslogJob;
 use nhattuanbl\Syslog\Models\Syslog;
@@ -17,7 +16,6 @@ trait SyslogTrait
 {
     public $SyslogTap = null;
     public static $SyslogEvents = ['created', 'updated', 'deleted', 'restored'];
-    private int $chunkSize = 500;
 
     protected static function bootSysLogTrait()
     {
@@ -37,7 +35,11 @@ trait SyslogTrait
         $properties = null;
         if ($event == 'updated') {
             foreach($this->getDirty() as $key => $value) {
-                if (in_array($key, ['created_at', 'updated_at', 'deleted_at'])) {
+                if (in_array($key, [
+                    $this->getCreatedAtColumn(),
+                    $this->getUpdatedAtColumn(),
+                    (method_exists($this, 'getDeletedAtColumn') ? $this->getDeletedAtColumn() : null)
+                ])) {
                     continue;
                 }
 
@@ -71,8 +73,11 @@ trait SyslogTrait
         $sysLogService = app(SyslogService::class);
         $sysLogService->addLog($logger);
 
-        if (count($sysLogService->getLogs()) >= $this->chunkSize) {
-            SyslogJob::dispatch($sysLogService->getLogs())->onQueue(config('syslog.queue'))->onConnection(config('syslog.queue_connection'));
+        if (count($sysLogService->getLogs()) >= (int) config('syslog.chunk')) {
+            SyslogJob::dispatch($sysLogService->getLogs())
+                ->onQueue(config('syslog.queue'))
+                ->onConnection(config('syslog.queue_connection'))
+            ;
             $sysLogService->clearLogs();
         }
     }

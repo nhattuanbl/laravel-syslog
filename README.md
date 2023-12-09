@@ -14,11 +14,11 @@ Important: With version 5.4 or below, you must register your service providers m
 ],
 ```
 
-Pushlish config file
+Publish config file
 ```
 php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="config"
 ```
-Pushlish migration file
+Publish migration file
 ```
 php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="migration"
 ```
@@ -45,4 +45,10 @@ class Product extends Model
     use SyslogTrait;
     ....
     
+```
+### Custom log
+```
+use nhattuanbl\Syslog\Models\Syslog;
+
+Syslog::log('auth', 'someone login', 'login', null, null, ['ip' => $request->ip()]);
 ```
