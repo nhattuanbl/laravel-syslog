@@ -42,14 +42,6 @@ class SysLogMiddleware
             Syslog::log('request', $request->fullUrl(), $request->method(), $request->user(), null, $properties);
         }
 
-        if (count($this->sysLogService->getLogs()) >= (int) config('syslog.chunk')) {
-            SyslogJob::dispatch($this->sysLogService->getLogs())
-                ->onQueue(config('syslog.queue'))
-                ->onConnection(config('syslog.queue_connection'))
-            ;
-            $this->sysLogService->clearLogs();
-        }
-
         return $next($request);
     }
 

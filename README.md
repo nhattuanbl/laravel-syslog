@@ -25,7 +25,9 @@ Publish migration file
 ```
 php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="migration"
 ```
-
+```
+php artisan migrate
+```
 ## Usage
 ### Tracking Model Events
 ```
