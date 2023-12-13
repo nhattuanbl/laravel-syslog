@@ -35,7 +35,7 @@ php artisan migrate
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Mod el;
 use nhattuanbl\Syslog\Traits\SyslogTrait;
 
 class Product extends Model
