@@ -10,6 +10,7 @@ class Syslog
     public static function getModel(): string
     {
         if (config('syslog.connection') === 'mongodb') {
+            if ((int) app()->version() < 8) return SyslogMongo7::class;
             return SyslogMongo::class;
         }
 
