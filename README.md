@@ -19,11 +19,11 @@ Important: With version 5.4 or below, you must register your service providers m
 
 Publish config file
 ```
-php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="config"
+php artisan vendor:publish --provider="nhattuanbl\Syslog\SyslogServiceProvider" --tag="config"
 ```
 Publish migration file
 ```
-php artisan vendor:publish --provider="nhattuanbl\syslog" --tag="migration"
+php artisan vendor:publish --provider="nhattuanbl\Syslog\SyslogServiceProvider" --tag="migration"
 ```
 ```
 php artisan migrate
@@ -35,7 +35,7 @@ php artisan migrate
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Mod el;
+use Illuminate\Database\Eloquent\Model;
 use nhattuanbl\Syslog\Traits\SyslogTrait;
 
 class Product extends Model
