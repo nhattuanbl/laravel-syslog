@@ -1,19 +1,17 @@
 <?php
 
 return [
-    //support mongodb
-    'connection' => env('SYSLOG_CONNECTION', env('DB_CONNECTION')),
+    'connection' => env('SYSLOG_CONNECTION', 'mongodb'),
 
-    //for detect causer
-    'guard' => env('SYSLOG_GUARD', 'sanctum'),
+    'guard' => env('SYSLOG_GUARD', 'web'),
 
-    'chunk' => (int) env('SYSLOG_CHUNK', 0),
+    'chunk' => (int) env('SYSLOG_CHUNK', 500),
 
     'queue' => env('SYSLOG_QUEUE', 'default'),
 
-    'queue_connection' => env('SYSLOG_QUEUE_CONNECTION', env('QUEUE_CONNECTION')),
+    'queue_connection' => env('SYSLOG_QUEUE_CONNECTION', 'sync'),
 
-    'log-request' => env('SYSLOG_REQUEST', true),
+    'log-request' => env('SYSLOG_REQUEST', false),
 
     'log-memory' => env('SYSLOG_MEMORY', true),
 

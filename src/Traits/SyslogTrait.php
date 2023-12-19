@@ -73,7 +73,7 @@ trait SyslogTrait
         $sysLogService = app(SyslogService::class);
         $sysLogService->addLog($logger);
 
-        if (count($sysLogService->getLogs()) >= (int) config('syslog.chunk')) {
+        if ($sysLogService->getLogs()->count() >= (int) config('syslog.chunk')) {
             SyslogJob::dispatch($sysLogService->getLogs())
                 ->onQueue(config('syslog.queue'))
                 ->onConnection(config('syslog.queue_connection'))
