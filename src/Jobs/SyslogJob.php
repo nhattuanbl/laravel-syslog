@@ -28,7 +28,8 @@ class SyslogJob implements ShouldQueue
     public function handle(): void
     {
         (Syslog::getModel())::insert($this->sysLogChunk->map(function($item) {
-            $item['properties'] = json_encode($item['properties']);
+            $item['properties'] = empty($item['properties']) ? null : json_encode($item['properties']);
+            $item['created_at'] = now();
             return $item;
         })->toArray());
     }
