@@ -58,6 +58,7 @@ trait SyslogTrait
             'causer_id' => null,
             'causer_type' => null,
             'properties' => $properties,
+            'created_at' => now(),
         ]);
 
         $auth = auth(config('syslog.guard'));

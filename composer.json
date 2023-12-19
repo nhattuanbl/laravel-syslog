@@ -1,6 +1,6 @@
 {
     "name": "nhattuanbl/syslog",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "description": "Laravel model & request logging",
     "license": "MIT",
     "autoload": {
