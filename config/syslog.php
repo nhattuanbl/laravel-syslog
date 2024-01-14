@@ -3,8 +3,6 @@
 return [
     'connection' => env('SYSLOG_CONNECTION', 'mongodb'),
 
-    'guard' => env('SYSLOG_GUARD', 'web'),
-
     'chunk' => (int) env('SYSLOG_CHUNK', 500),
 
     'queue' => env('SYSLOG_QUEUE', 'default'),

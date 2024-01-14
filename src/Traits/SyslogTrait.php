@@ -3,6 +3,7 @@
 namespace nhattuanbl\Syslog\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use nhattuanbl\Syslog\Jobs\SyslogJob;
 use nhattuanbl\Syslog\Models\Syslog;
 use nhattuanbl\Syslog\Services\SyslogService;
@@ -61,10 +62,15 @@ trait SyslogTrait
             'created_at' => now(),
         ]);
 
-        $auth = auth(config('syslog.guard'));
-        if (!isset($logger->causer_id) && $auth->check()) {
-            $logger->causer_id = $auth->user()->id;
-            $logger->causer_type = get_class($auth->user());
+        foreach (array_keys(config('auth.guards')) as $guard) {
+            if (Auth::guard($guard)->check()) {
+                $current_guard = $guard;
+            }
+        }
+
+        if (isset($current_guard) && !isset($logger->causer_id) && Auth::guard($current_guard)->check()) {
+            $logger->causer_id = Auth::guard($current_guard)->user()->id;
+            $logger->causer_type = get_class(Auth::guard($current_guard)->user());
         }
 
         if (is_callable($this->SyslogTap)) {
