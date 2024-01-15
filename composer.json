@@ -1,6 +1,6 @@
 {
     "name": "nhattuanbl/syslog",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "description": "Laravel model & request logging",
     "license": "MIT",
     "autoload": {
@@ -16,9 +16,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "nhattuanbl/larahelper": "dev-master"
-    },
     "extra": {
         "laravel": {
             "providers": [
