@@ -16,4 +16,8 @@ return [
     'log-session' => env('SYSLOG_SESSION', true),
 
     'log-headers' => env('SYSLOG_HEADERS', true),
+
+    'except-request' => [
+
+    ],
 ];
