@@ -5,7 +5,7 @@ return [
 
     'chunk' => (int) env('SYSLOG_CHUNK', 1000),
 
-    'queue' => env('SYSLOG_QUEUE', 'syslog'),
+    'queue' => env('SYSLOG_QUEUE', 'default'),
 
     'log-request' => env('SYSLOG_REQUEST', false),
 
