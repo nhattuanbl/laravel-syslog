@@ -48,7 +48,7 @@ class SysLogMiddleware
     public function terminate(Request $request, Response $response): void
     {
         if ($this->sysLogService->getLogs()->count()) {
-            SyslogJob::dispatch($this->sysLogService->getLogs())->onQueue(config('syslog.queue'))->onConnection(config('syslog.queue_connection'));
+            SyslogJob::dispatch($this->sysLogService->getLogs())->onQueue(config('syslog.queue'))->onConnection(config('syslog.connection'));
         }
     }
 }

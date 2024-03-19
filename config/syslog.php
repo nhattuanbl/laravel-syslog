@@ -3,11 +3,9 @@
 return [
     'connection' => env('SYSLOG_CONNECTION', 'mongodb'),
 
-    'chunk' => (int) env('SYSLOG_CHUNK', 500),
+    'chunk' => (int) env('SYSLOG_CHUNK', 1000),
 
-    'queue' => env('SYSLOG_QUEUE', 'default'),
-
-    'queue_connection' => env('SYSLOG_QUEUE_CONNECTION', 'sync'),
+    'queue' => env('SYSLOG_QUEUE', 'syslog'),
 
     'log-request' => env('SYSLOG_REQUEST', false),
 
